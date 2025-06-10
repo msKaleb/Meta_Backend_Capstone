@@ -74,10 +74,20 @@ WSGI_APPLICATION = 'littlelemon.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# create user 'capstone'@'localhost' identified by 'capstone';
+# grant all privileges on LittleLemon.* to 'capstone'@'localhost';
+# flush privileges;
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'LittleLemon',
+        'USER': 'capstone',     # change with yours
+        'PASSWORD': 'capstone', # change with yours
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+          'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
     }
 }
 
