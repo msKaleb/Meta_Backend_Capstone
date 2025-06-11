@@ -1,0 +1,7 @@
+Django admin panel
+  User: DjangoAdmin
+  Password: capstone
+
+MySQL info in settings.py (change with yours)
+  User: capstone
+  Password: capstone
