@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'restaurant',
     # 'reservation',
     'rest_framework',
+    'rest_framework.authtoken',
+    'djoser',  # must be after 'rest_framework' in the list
 ]
 
 MIDDLEWARE = [
@@ -83,11 +85,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'LittleLemon',
         'USER': 'capstone',     # change with yours
-        'PASSWORD': 'capstone', # change with yours
+        'PASSWORD': 'capstone',  # change with yours
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
-          'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         },
     }
 }
@@ -133,3 +135,12 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DJOSER = {"USER_ID_FIELD": "username"}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',  # login from Django /admin
+    ),
+}
